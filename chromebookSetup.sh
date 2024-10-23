@@ -12,7 +12,7 @@ sudo apt install syncthing libnss3* wl-clipboard curl jq fuse thunar -y -qq
 # Create necessary directories
 mkdir -p ~/sync ~/offline 
 DOWNLOAD_DIR=~/offline
-SETUP_DIR=~/cloud/setup
+SETUP_DIR=~/setup
 LOG_FILE=$SETUP_DIR/log.log
 sudo touch $LOG_FILE
 

@@ -5,6 +5,9 @@ CLOUDS=$(ls "$SMB")
 LOG_FILE=$1
 n=0
 
+echo "symlinkToCloud.sh" >> $LOG_FILE
+echo "-----------------" >> $LOG_FILE
+
 echo "Found these clouds: $CLOUDS" >> $LOG_FILE
 
 for i in $CLOUDS; do

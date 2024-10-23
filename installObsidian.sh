@@ -4,6 +4,9 @@ DOWNLOAD_DIR=$2
 LOG_FILE=$1
 ARCHITECTURE=$(uname -m)
 
+echo "installObsidian.sh" >> $LOG_FILE
+echo "------------------" >> $LOG_FILE
+
 # Check if the download directory and log file are provided
 if [[ -z "$DOWNLOAD_DIR" || -z "$LOG_FILE" ]]; then
   echo "Usage: $0 <log_file> <download_directory>"
