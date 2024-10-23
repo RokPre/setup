@@ -1,0 +1,23 @@
+● syncthing.service - Syncthing - Open Source Continuous File Synchronization
+     Loaded: loaded (/etc/systemd/system/syncthing.service; enabled; preset: enabled)
+    Drop-In: /run/systemd/system/service.d
+             └─zzz-lxc-service.conf
+     Active: activating (auto-restart) (Result: exit-code) since Sat 2024-10-19 16:38:39 CEST; 10ms ago
+       Docs: https://docs.syncthing.net/
+    Process: 761 ExecStart=/usr/bin/syncthing -no-browser -logfile=/var/log/syncthing.log -logflags=3 (code=exited, status=217/USER)
+   Main PID: 761 (code=exited, status=217/USER)
+Job for syncDotFiles.service failed because the control process exited with error code.
+See "systemctl status syncDotFiles.service" and "journalctl -xeu syncDotFiles.service" for details.
+× syncDotFiles.service - Sync Dotfiles on Startup
+     Loaded: loaded (/etc/systemd/system/syncDotFiles.service; enabled; preset: enabled)
+    Drop-In: /run/systemd/system/service.d
+             └─zzz-lxc-service.conf
+     Active: failed (Result: exit-code) since Sat 2024-10-19 16:38:39 CEST; 10ms ago
+    Process: 814 ExecStart=/root/sync/dotFiles/syncDotFiles.sh (code=exited, status=203/EXEC)
+   Main PID: 814 (code=exited, status=203/EXEC)
+
+Oct 19 16:38:39 penguin systemd[1]: Starting syncDotFiles.service - Sync Dotfiles on Startup...
+Oct 19 16:38:39 penguin systemd[1]: syncDotFiles.service: Main process exited, code=exited, status=203/EXEC
+Oct 19 16:38:39 penguin systemd[1]: syncDotFiles.service: Failed with result 'exit-code'.
+Oct 19 16:38:39 penguin systemd[1]: Failed to start syncDotFiles.service - Sync Dotfiles on Startup.
+Latest Obsidian release URL: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.7.4/Obsidian-1.7.4.AppImage

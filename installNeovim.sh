@@ -1,8 +1,14 @@
+#!/bin/bash
+
+LOG_FILE=$1
+DOWNLOAD_DIR=$2
+
 LATEST_RELEASE_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest |
-  grep "browser_download_url.*nvim-linux64.tar.gz" |
+  grep "browser_download_url.*nvim-linux64.tar.gz" | grep 256 -v |
   cut -d : -f 2,3 |
   tr -d ' "')
 
+echo $LATEST_RELEASE_URL
 if [[ -z "$LATEST_RELEASE_URL" ]]; then
   echo "Error: Could not find the latest release URL."
   exit 1

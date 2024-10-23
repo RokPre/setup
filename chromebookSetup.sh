@@ -7,13 +7,19 @@ echo "It will install Obsidian, Syncthing, and Neovim"
 sudo apt update -qq && sudo apt upgrade -y -qq
 
 # Install required packages
-sudo apt install syncthing libnss3* wl-clipboard curl -y -qq
+sudo apt install syncthing libnss3* wl-clipboard curl jq fuse thunar -y -qq
 
 # Create necessary directories
-mkdir -p ~/sync ~/offline ~/cloud
+mkdir -p ~/sync ~/offline 
 DOWNLOAD_DIR=~/offline
-SETUP_DIR=~/setup
+SETUP_DIR=~/cloud/setup
 LOG_FILE=$SETUP_DIR/log.log
+sudo touch $LOG_FILE
+
+# Link cloud to ~/cloud 
+echo "Linking SMB file share to ~/cloud"
+echo "-------------------------------"
+bash $SETUP_DIR/symlinkToCloud.sh $LOG_FILE
 
 # Syncthing service setup
 echo "Seting up syncthing service"
@@ -28,12 +34,12 @@ bash $SETUP_DIR/serviceDotFiles.sh $LOG_FILE
 # Install the latest version of Obsidian
 echo "Installing Obsidina.md"
 echo "-------------------------------"
-bash $SETUP_DIR/installObsidian.sh $LOG_FILE
+bash $SETUP_DIR/installObsidian.sh $LOG_FILE $DOWNLOAD_DIR
 
 # Install the latest version of Neovim
 echo "Installing Neovim"
 echo "-------------------------------"
-bash $SETUP_DIR/installNeovim.sh $LOG_FILE
+bash $SETUP_DIR/installNeovim.sh $LOG_FILE $DOWNLOAD_DIR
 
 # Clean up
 # sudo rm -r "$DOWNLOAD_DIR/nvim-linux64.tar.gz"
